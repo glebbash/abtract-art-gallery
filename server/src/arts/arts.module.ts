@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ArtsService } from './arts.service';
 import { ArtsController } from './arts.controller';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Art } from './entities/art.entity';
+import { MongooseModule } from '@nestjs/mongoose';
+import { Art, ArtSchema } from './schema/art.schema';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Art])],
+  imports: [MongooseModule.forFeature([{ name: Art.name, schema: ArtSchema }])],
   controllers: [ArtsController],
   providers: [ArtsService],
   exports: [ArtsService],

@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
-import { Art } from './entities/art.entity';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { BaseRepositoryService } from 'nestjs-mongo-crud-base';
+import { Art, ArtDocument } from './schema/art.schema';
 
 @Injectable()
-export class ArtsService extends TypeOrmCrudService<Art> {
-  constructor(@InjectRepository(Art) repo) {
-    super(repo);
+export class ArtsService extends BaseRepositoryService<ArtDocument> {
+  constructor(@InjectModel(Art.name) private artModel: Model<ArtDocument>) {
+    super(artModel);
   }
 }

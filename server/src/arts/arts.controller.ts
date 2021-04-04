@@ -1,14 +1,11 @@
 import { Controller } from '@nestjs/common';
-import { Crud, CrudController } from '@nestjsx/crud';
+import { BaseController } from 'nestjs-mongo-crud-base';
 import { ArtsService } from './arts.service';
-import { Art } from './entities/art.entity';
+import { ArtDocument } from './schema/art.schema';
 
-@Crud({
-  model: {
-    type: Art,
-  },
-})
 @Controller('arts')
-export class ArtsController implements CrudController<Art> {
-  constructor(public service: ArtsService) {}
+export class ArtsController extends BaseController<ArtDocument> {
+  constructor(private readonly artsService: ArtsService) {
+    super(artsService);
+  }
 }

@@ -1,18 +1,8 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
 import { ArtsModule } from './arts/arts.module';
-import { Art } from './arts/entities/art.entity';
 
 @Module({
-  imports: [
-    ArtsModule,
-    TypeOrmModule.forRoot({
-      type: 'mongodb',
-      host: 'localhost',
-      port: 27017,
-      database: 'test',
-      entities: [Art],
-    }),
-  ],
+  imports: [ArtsModule, MongooseModule.forRoot('mongodb://localhost/nest')],
 })
 export class AppModule {}
