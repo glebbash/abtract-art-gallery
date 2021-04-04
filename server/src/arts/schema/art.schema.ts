@@ -7,10 +7,10 @@ export class Art {
   name: string;
 
   @Prop()
-  age: number;
+  author: string;
 
   @Prop()
-  breed: string;
+  image: string;
 }
 
 export type ArtDocument = Art & Document;
