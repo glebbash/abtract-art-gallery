@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { FC } from "react";
+import { useHistory } from "react-router-dom";
 import { ArtWithId } from "../types/art";
 
 export type ArtsState =
@@ -36,6 +37,7 @@ export type ArtsViewProps = { arts: ArtsState };
 
 const ArtsView: FC<ArtsViewProps> = ({ arts }) => {
   const classes = useStyles();
+  const history = useHistory();
 
   if (arts.type === "loading") {
     return <p> Loading... </p>;
@@ -54,6 +56,7 @@ const ArtsView: FC<ArtsViewProps> = ({ arts }) => {
               className={classes.cardMedia}
               image={art.image}
               title="Image title"
+              onClick={() => history.push(`/arts/${art._id}`)}
             />
             <CardContent className={classes.cardContent}>
               <Typography gutterBottom variant="h5" component="h2">
