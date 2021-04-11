@@ -52,7 +52,7 @@ export const ArtsView: FC<ArtsViewProps> = ({ arts }) => {
             <CardMedia
               className={classes.cardMedia}
               image={art.image}
-              title="Image title"
+              title={art.name}
               onClick={() => history.push(`/arts/${art._id}`)}
             />
             <CardContent className={classes.cardContent}>
