@@ -11,9 +11,7 @@ import React, { FC } from "react";
 import { useHistory } from "react-router-dom";
 import { ArtWithId } from "../types/art";
 
-export type ArtsState =
-  | { type: "loading" }
-  | { type: "ready"; data: ArtWithId[] };
+export type Arts = ArtWithId[];
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -32,23 +30,23 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export type ArtsViewProps = { arts: ArtsState };
+export type ArtsViewProps = { arts?: Arts };
 
 export const ArtsView: FC<ArtsViewProps> = ({ arts }) => {
   const classes = useStyles();
   const history = useHistory();
 
-  if (arts.type === "loading") {
+  if (!arts) {
     return <p> Loading... </p>;
   }
 
-  if (arts.data.length === 0) {
+  if (arts.length === 0) {
     return <p> Oops, so empty </p>;
   }
 
   return (
     <>
-      {arts.data.map((art) => (
+      {arts.map((art) => (
         <Grid item key={art._id} xs={12} sm={6} md={4}>
           <Card className={classes.card}>
             <CardMedia

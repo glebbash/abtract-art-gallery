@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import { useHistory } from "react-router-dom";
-import { ArtsView, ArtsState } from "../views/ArtsView";
+import { ArtsView, Arts } from "../views/ArtsView";
 import { PageBase } from "../views/PageBase";
 
 const useStyles = makeStyles((theme) => ({
@@ -15,17 +15,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getArts = async (): Promise<ArtsState> => {
+const getArts = async (): Promise<Arts> => {
   const res = await fetch("http://127.0.0.1:4000/arts");
   const data = await res.json();
-  return { type: "ready", data };
+  return data;
 };
 
 export const MainPage: FC = () => {
   const history = useHistory();
   const classes = useStyles();
 
-  const [arts, setArts] = useState<ArtsState>({ type: "loading" });
+  const [arts, setArts] = useState<Arts>();
 
   useEffect(() => {
     getArts().then(setArts);
