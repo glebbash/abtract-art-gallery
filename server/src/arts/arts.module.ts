@@ -1,11 +1,15 @@
 import { Module } from '@nestjs/common';
 import { ArtsService } from './arts.service';
 import { ArtsController } from './arts.controller';
-import { MongooseModule } from '@nestjs/mongoose';
-import { Art, ArtSchema } from './schema/art.schema';
+import { MongooseModule, SchemaFactory } from '@nestjs/mongoose';
+import { Art } from './schema/art.schema';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: Art.name, schema: ArtSchema }])],
+  imports: [
+    MongooseModule.forFeature([
+      { name: Art.name, schema: SchemaFactory.createForClass(Art) },
+    ]),
+  ],
   controllers: [ArtsController],
   providers: [ArtsService],
   exports: [ArtsService],

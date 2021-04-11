@@ -1,5 +1,4 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Prop, Schema } from '@nestjs/mongoose';
 
 @Schema()
 export class Art {
@@ -12,7 +11,3 @@ export class Art {
   @Prop()
   image: string;
 }
-
-export type ArtDocument = Art & Document;
-
-export const ArtSchema = SchemaFactory.createForClass(Art);
