@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable react/prop-types */
 import {
   Grid,
   Card,
@@ -35,7 +34,7 @@ const useStyles = makeStyles(() => ({
 
 export type ArtsViewProps = { arts: ArtsState };
 
-const ArtsView: FC<ArtsViewProps> = ({ arts }) => {
+export const ArtsView: FC<ArtsViewProps> = ({ arts }) => {
   const classes = useStyles();
   const history = useHistory();
 
@@ -70,5 +69,3 @@ const ArtsView: FC<ArtsViewProps> = ({ arts }) => {
     </>
   );
 };
-
-export default ArtsView;
