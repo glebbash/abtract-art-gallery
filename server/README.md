@@ -22,7 +22,3 @@ npm run start:dev
 # production mode
 npm run start:prod
 ```
-
-## License
-
-[MIT licensed](LICENSE)
