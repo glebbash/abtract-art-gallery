@@ -1,2 +1,19 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-**You have got all the scripts and features of CRA with prettier, eslint, typescript & git hooks out of the box.**
+# Abstract art gallery client
+
+This is a client application written using React + Typescript
+
+## Installation
+
+```bash
+npm install
+```
+
+## Running the app
+
+```bash
+npm run start
+```
+
+## License
+
+[MIT licensed](LICENSE)
